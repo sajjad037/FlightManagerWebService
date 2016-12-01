@@ -1,0 +1,280 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<wsdl:definitions targetNamespace="http://Server.asg1.dist.concordia.com" xmlns:apachesoap="http://xml.apache.org/xml-soap" xmlns:impl="http://Server.asg1.dist.concordia.com" xmlns:intf="http://Server.asg1.dist.concordia.com" xmlns:wsdl="http://schemas.xmlsoap.org/wsdl/" xmlns:wsdlsoap="http://schemas.xmlsoap.org/wsdl/soap/" xmlns:xsd="http://www.w3.org/2001/XMLSchema">
+<!--WSDL created by Apache Axis version: 1.4
+Built on Apr 22, 2006 (06:55:48 PDT)-->
+ <wsdl:types>
+  <schema elementFormDefault="qualified" targetNamespace="http://Server.asg1.dist.concordia.com" xmlns="http://www.w3.org/2001/XMLSchema">
+   <element name="getBookedFlightCount">
+    <complexType>
+     <sequence>
+      <element name="recordType" type="xsd:string"/>
+     </sequence>
+    </complexType>
+   </element>
+   <element name="getBookedFlightCountResponse">
+    <complexType>
+     <sequence>
+      <element name="getBookedFlightCountReturn" type="xsd:string"/>
+     </sequence>
+    </complexType>
+   </element>
+   <element name="transferReservation">
+    <complexType>
+     <sequence>
+      <element name="passengerID" type="xsd:string"/>
+      <element name="currentCity" type="xsd:string"/>
+      <element name="otherCity" type="xsd:string"/>
+     </sequence>
+    </complexType>
+   </element>
+   <element name="transferReservationResponse">
+    <complexType>
+     <sequence>
+      <element name="transferReservationReturn" type="xsd:string"/>
+     </sequence>
+    </complexType>
+   </element>
+   <element name="bookFlight">
+    <complexType>
+     <sequence>
+      <element name="firstName" type="xsd:string"/>
+      <element name="lastName" type="xsd:string"/>
+      <element name="address" type="xsd:string"/>
+      <element name="phone" type="xsd:string"/>
+      <element name="destination" type="xsd:string"/>
+      <element name="date" type="xsd:string"/>
+      <element name="flightClass" type="xsd:string"/>
+     </sequence>
+    </complexType>
+   </element>
+   <element name="bookFlightResponse">
+    <complexType>
+     <sequence>
+      <element name="bookFlightReturn" type="xsd:string"/>
+     </sequence>
+    </complexType>
+   </element>
+   <element name="editFlightRecord">
+    <complexType>
+     <sequence>
+      <element name="recordID" type="xsd:string"/>
+      <element name="fieldName" type="xsd:string"/>
+      <element name="newValue" type="xsd:string"/>
+     </sequence>
+    </complexType>
+   </element>
+   <element name="editFlightRecordResponse">
+    <complexType>
+     <sequence>
+      <element name="editFlightRecordReturn" type="xsd:string"/>
+     </sequence>
+    </complexType>
+   </element>
+  </schema>
+ </wsdl:types>
+
+   <wsdl:message name="bookFlightRequest">
+
+      <wsdl:part element="impl:bookFlight" name="parameters">
+
+      </wsdl:part>
+
+   </wsdl:message>
+
+   <wsdl:message name="transferReservationRequest">
+
+      <wsdl:part element="impl:transferReservation" name="parameters">
+
+      </wsdl:part>
+
+   </wsdl:message>
+
+   <wsdl:message name="editFlightRecordRequest">
+
+      <wsdl:part element="impl:editFlightRecord" name="parameters">
+
+      </wsdl:part>
+
+   </wsdl:message>
+
+   <wsdl:message name="transferReservationResponse">
+
+      <wsdl:part element="impl:transferReservationResponse" name="parameters">
+
+      </wsdl:part>
+
+   </wsdl:message>
+
+   <wsdl:message name="getBookedFlightCountRequest">
+
+      <wsdl:part element="impl:getBookedFlightCount" name="parameters">
+
+      </wsdl:part>
+
+   </wsdl:message>
+
+   <wsdl:message name="getBookedFlightCountResponse">
+
+      <wsdl:part element="impl:getBookedFlightCountResponse" name="parameters">
+
+      </wsdl:part>
+
+   </wsdl:message>
+
+   <wsdl:message name="editFlightRecordResponse">
+
+      <wsdl:part element="impl:editFlightRecordResponse" name="parameters">
+
+      </wsdl:part>
+
+   </wsdl:message>
+
+   <wsdl:message name="bookFlightResponse">
+
+      <wsdl:part element="impl:bookFlightResponse" name="parameters">
+
+      </wsdl:part>
+
+   </wsdl:message>
+
+   <wsdl:portType name="WashingtonServer">
+
+      <wsdl:operation name="getBookedFlightCount">
+
+         <wsdl:input message="impl:getBookedFlightCountRequest" name="getBookedFlightCountRequest">
+
+       </wsdl:input>
+
+         <wsdl:output message="impl:getBookedFlightCountResponse" name="getBookedFlightCountResponse">
+
+       </wsdl:output>
+
+      </wsdl:operation>
+
+      <wsdl:operation name="transferReservation">
+
+         <wsdl:input message="impl:transferReservationRequest" name="transferReservationRequest">
+
+       </wsdl:input>
+
+         <wsdl:output message="impl:transferReservationResponse" name="transferReservationResponse">
+
+       </wsdl:output>
+
+      </wsdl:operation>
+
+      <wsdl:operation name="bookFlight">
+
+         <wsdl:input message="impl:bookFlightRequest" name="bookFlightRequest">
+
+       </wsdl:input>
+
+         <wsdl:output message="impl:bookFlightResponse" name="bookFlightResponse">
+
+       </wsdl:output>
+
+      </wsdl:operation>
+
+      <wsdl:operation name="editFlightRecord">
+
+         <wsdl:input message="impl:editFlightRecordRequest" name="editFlightRecordRequest">
+
+       </wsdl:input>
+
+         <wsdl:output message="impl:editFlightRecordResponse" name="editFlightRecordResponse">
+
+       </wsdl:output>
+
+      </wsdl:operation>
+
+   </wsdl:portType>
+
+   <wsdl:binding name="WashingtonServerSoapBinding" type="impl:WashingtonServer">
+
+      <wsdlsoap:binding style="document" transport="http://schemas.xmlsoap.org/soap/http"/>
+
+      <wsdl:operation name="getBookedFlightCount">
+
+         <wsdlsoap:operation soapAction=""/>
+
+         <wsdl:input name="getBookedFlightCountRequest">
+
+            <wsdlsoap:body use="literal"/>
+
+         </wsdl:input>
+
+         <wsdl:output name="getBookedFlightCountResponse">
+
+            <wsdlsoap:body use="literal"/>
+
+         </wsdl:output>
+
+      </wsdl:operation>
+
+      <wsdl:operation name="transferReservation">
+
+         <wsdlsoap:operation soapAction=""/>
+
+         <wsdl:input name="transferReservationRequest">
+
+            <wsdlsoap:body use="literal"/>
+
+         </wsdl:input>
+
+         <wsdl:output name="transferReservationResponse">
+
+            <wsdlsoap:body use="literal"/>
+
+         </wsdl:output>
+
+      </wsdl:operation>
+
+      <wsdl:operation name="bookFlight">
+
+         <wsdlsoap:operation soapAction=""/>
+
+         <wsdl:input name="bookFlightRequest">
+
+            <wsdlsoap:body use="literal"/>
+
+         </wsdl:input>
+
+         <wsdl:output name="bookFlightResponse">
+
+            <wsdlsoap:body use="literal"/>
+
+         </wsdl:output>
+
+      </wsdl:operation>
+
+      <wsdl:operation name="editFlightRecord">
+
+         <wsdlsoap:operation soapAction=""/>
+
+         <wsdl:input name="editFlightRecordRequest">
+
+            <wsdlsoap:body use="literal"/>
+
+         </wsdl:input>
+
+         <wsdl:output name="editFlightRecordResponse">
+
+            <wsdlsoap:body use="literal"/>
+
+         </wsdl:output>
+
+      </wsdl:operation>
+
+   </wsdl:binding>
+
+   <wsdl:service name="WashingtonServerService">
+
+      <wsdl:port binding="impl:WashingtonServerSoapBinding" name="WashingtonServer">
+
+         <wsdlsoap:address location="http://localhost/FlightManagerWebService/services/WashingtonServer"/>
+
+      </wsdl:port>
+
+   </wsdl:service>
+
+</wsdl:definitions>

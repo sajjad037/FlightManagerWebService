@@ -1,0 +1,354 @@
+<ns1:deployment xmlns="http://xml.apache.org/axis/wsdd/" xmlns:java="http://xml.apache.org/axis/wsdd/providers/java" xmlns:ns1="http://xml.apache.org/axis/wsdd/">
+ <ns1:globalConfiguration>
+  <ns1:parameter name="sendMultiRefs" value="true"/>
+  <ns1:parameter name="disablePrettyXML" value="true"/>
+  <ns1:parameter name="adminPassword" value="admin"/>
+  <ns1:parameter name="attachments.Directory" value="C:\Anroid_Dev_7\Concordia\Comp6231\.metadata\.plugins\org.eclipse.wst.server.core\tmp0\wtpwebapps\FlightManagerWebService\WEB-INF\attachments"/>
+  <ns1:parameter name="dotNetSoapEncFix" value="true"/>
+  <ns1:parameter name="enableNamespacePrefixOptimization" value="false"/>
+  <ns1:parameter name="sendXMLDeclaration" value="true"/>
+  <ns1:parameter name="attachments.implementation" value="org.apache.axis.attachments.AttachmentsImpl"/>
+  <ns1:parameter name="sendXsiTypes" value="true"/>
+  <ns1:requestFlow>
+   <ns1:handler type="java:org.apache.axis.handlers.JWSHandler">
+    <ns1:parameter name="scope" value="session"/>
+   </ns1:handler>
+   <ns1:handler type="java:org.apache.axis.handlers.JWSHandler">
+    <ns1:parameter name="scope" value="request"/>
+    <ns1:parameter name="extension" value=".jwr"/>
+   </ns1:handler>
+  </ns1:requestFlow>
+ </ns1:globalConfiguration>
+ <ns1:handler name="URLMapper" type="java:org.apache.axis.handlers.http.URLMapper"/>
+ <ns1:handler name="Authenticate" type="java:org.apache.axis.handlers.SimpleAuthenticationHandler"/>
+ <ns1:handler name="LocalResponder" type="java:org.apache.axis.transport.local.LocalResponder"/>
+ <ns1:service name="MontrealService" provider="java:RPC" style="wrapped" use="literal">
+  <ns2:operation name="editFlightRecord" qname="ns1:editFlightRecord" returnQName="ns1:editFlightRecordReturn" returnType="xsd:string" soapAction="" xmlns:ns1="http://Server.asg1.dist.concordia.com" xmlns:xsd="http://www.w3.org/2001/XMLSchema" xmlns:ns2="http://xml.apache.org/axis/wsdd/">
+   <ns2:parameter qname="ns1:recordID" type="xsd:string"/>
+   <ns2:parameter qname="ns1:fieldName" type="xsd:string"/>
+   <ns2:parameter qname="ns1:newValue" type="xsd:string"/>
+  </ns2:operation>
+  <ns1:operation name="bookFlight" qname="ns2:bookFlight" returnQName="ns2:bookFlightReturn" returnType="xsd:string" soapAction="" xmlns:ns2="http://Server.asg1.dist.concordia.com" xmlns:xsd="http://www.w3.org/2001/XMLSchema">
+   <ns1:parameter qname="ns2:firstName" type="xsd:string"/>
+   <ns1:parameter qname="ns2:lastName" type="xsd:string"/>
+   <ns1:parameter qname="ns2:address" type="xsd:string"/>
+   <ns1:parameter qname="ns2:phone" type="xsd:string"/>
+   <ns1:parameter qname="ns2:destination" type="xsd:string"/>
+   <ns1:parameter qname="ns2:date" type="xsd:string"/>
+   <ns1:parameter qname="ns2:flightClass" type="xsd:string"/>
+  </ns1:operation>
+  <ns1:operation name="getBookedFlightCount" qname="ns3:getBookedFlightCount" returnQName="ns3:getBookedFlightCountReturn" returnType="xsd:string" soapAction="" xmlns:ns3="http://Server.asg1.dist.concordia.com" xmlns:xsd="http://www.w3.org/2001/XMLSchema">
+   <ns1:parameter qname="ns3:recordType" type="xsd:string"/>
+  </ns1:operation>
+  <ns1:operation name="transferReservation" qname="ns4:transferReservation" returnQName="ns4:transferReservationReturn" returnType="xsd:string" soapAction="" xmlns:ns4="http://Server.asg1.dist.concordia.com" xmlns:xsd="http://www.w3.org/2001/XMLSchema">
+   <ns1:parameter qname="ns4:passengerID" type="xsd:string"/>
+   <ns1:parameter qname="ns4:currentCity" type="xsd:string"/>
+   <ns1:parameter qname="ns4:otherCity" type="xsd:string"/>
+  </ns1:operation>
+  <ns1:parameter name="allowedMethods" value="transferReservation bookFlight getBookedFlightCount editFlightRecord"/>
+  <ns1:parameter name="typeMappingVersion" value="1.2"/>
+  <ns1:parameter name="wsdlPortType" value="MontrealService"/>
+  <ns1:parameter name="className" value="com.concordia.dist.asg1.Server.MontrealService"/>
+  <ns1:parameter name="wsdlServicePort" value="MontrealService"/>
+  <ns1:parameter name="schemaQualified" value="http://Server.asg1.dist.concordia.com"/>
+  <ns1:parameter name="wsdlTargetNamespace" value="http://Server.asg1.dist.concordia.com"/>
+  <ns1:parameter name="wsdlServiceElement" value="MontrealServiceService"/>
+ </ns1:service>
+ <ns1:service name="MontrealServer" provider="java:RPC" style="wrapped" use="literal">
+  <ns1:operation name="getBookedFlightCount" qname="ns5:getBookedFlightCount" returnQName="ns5:getBookedFlightCountReturn" returnType="xsd:string" soapAction="" xmlns:ns5="http://Server.asg1.dist.concordia.com" xmlns:xsd="http://www.w3.org/2001/XMLSchema">
+   <ns1:parameter qname="ns5:recordType" type="xsd:string"/>
+  </ns1:operation>
+  <ns1:operation name="transferReservation" qname="ns6:transferReservation" returnQName="ns6:transferReservationReturn" returnType="xsd:string" soapAction="" xmlns:ns6="http://Server.asg1.dist.concordia.com" xmlns:xsd="http://www.w3.org/2001/XMLSchema">
+   <ns1:parameter qname="ns6:passengerID" type="xsd:string"/>
+   <ns1:parameter qname="ns6:currentCity" type="xsd:string"/>
+   <ns1:parameter qname="ns6:otherCity" type="xsd:string"/>
+  </ns1:operation>
+  <ns1:operation name="bookFlight" qname="ns7:bookFlight" returnQName="ns7:bookFlightReturn" returnType="xsd:string" soapAction="" xmlns:ns7="http://Server.asg1.dist.concordia.com" xmlns:xsd="http://www.w3.org/2001/XMLSchema">
+   <ns1:parameter qname="ns7:firstName" type="xsd:string"/>
+   <ns1:parameter qname="ns7:lastName" type="xsd:string"/>
+   <ns1:parameter qname="ns7:address" type="xsd:string"/>
+   <ns1:parameter qname="ns7:phone" type="xsd:string"/>
+   <ns1:parameter qname="ns7:destination" type="xsd:string"/>
+   <ns1:parameter qname="ns7:date" type="xsd:string"/>
+   <ns1:parameter qname="ns7:flightClass" type="xsd:string"/>
+  </ns1:operation>
+  <ns1:operation name="editFlightRecord" qname="ns8:editFlightRecord" returnQName="ns8:editFlightRecordReturn" returnType="xsd:string" soapAction="" xmlns:ns8="http://Server.asg1.dist.concordia.com" xmlns:xsd="http://www.w3.org/2001/XMLSchema">
+   <ns1:parameter qname="ns8:recordID" type="xsd:string"/>
+   <ns1:parameter qname="ns8:fieldName" type="xsd:string"/>
+   <ns1:parameter qname="ns8:newValue" type="xsd:string"/>
+  </ns1:operation>
+  <ns1:parameter name="allowedMethods" value="transferReservation getBookedFlightCount bookFlight editFlightRecord"/>
+  <ns1:parameter name="typeMappingVersion" value="1.2"/>
+  <ns1:parameter name="wsdlPortType" value="MontrealServer"/>
+  <ns1:parameter name="className" value="com.concordia.dist.asg1.Server.MontrealServer"/>
+  <ns1:parameter name="wsdlServicePort" value="MontrealServer"/>
+  <ns1:parameter name="schemaQualified" value="http://Server.asg1.dist.concordia.com"/>
+  <ns1:parameter name="wsdlTargetNamespace" value="http://Server.asg1.dist.concordia.com"/>
+  <ns1:parameter name="wsdlServiceElement" value="MontrealServerService"/>
+ </ns1:service>
+ <ns1:service name="AdminService" provider="java:MSG">
+  <ns1:parameter name="allowedMethods" value="AdminService"/>
+  <ns1:parameter name="enableRemoteAdmin" value="false"/>
+  <ns1:parameter name="className" value="org.apache.axis.utils.Admin"/>
+  <ns1:namespace>http://xml.apache.org/axis/wsdd/</ns1:namespace>
+ </ns1:service>
+ <ns1:service name="FlightOperationsImplementation" provider="java:RPC" style="wrapped" use="literal">
+  <ns1:operation name="mainFunc" qname="ns9:mainFunc" soapAction="" xmlns:ns9="http://Server.asg1.dist.concordia.com"/>
+  <ns1:operation name="editFlightRecord" qname="ns10:editFlightRecord" returnQName="ns10:editFlightRecordReturn" returnType="xsd:string" soapAction="" xmlns:ns10="http://Server.asg1.dist.concordia.com" xmlns:xsd="http://www.w3.org/2001/XMLSchema">
+   <ns1:parameter qname="ns10:recordID" type="xsd:string"/>
+   <ns1:parameter qname="ns10:fieldName" type="xsd:string"/>
+   <ns1:parameter qname="ns10:newValue" type="xsd:string"/>
+  </ns1:operation>
+  <ns1:operation name="bookFlight" qname="ns11:bookFlight" returnQName="ns11:bookFlightReturn" returnType="xsd:string" soapAction="" xmlns:ns11="http://Server.asg1.dist.concordia.com" xmlns:xsd="http://www.w3.org/2001/XMLSchema">
+   <ns1:parameter qname="ns11:firstName" type="xsd:string"/>
+   <ns1:parameter qname="ns11:lastName" type="xsd:string"/>
+   <ns1:parameter qname="ns11:address" type="xsd:string"/>
+   <ns1:parameter qname="ns11:phone" type="xsd:string"/>
+   <ns1:parameter qname="ns11:destination" type="xsd:string"/>
+   <ns1:parameter qname="ns11:date" type="xsd:string"/>
+   <ns1:parameter qname="ns11:flightClass" type="xsd:string"/>
+  </ns1:operation>
+  <ns1:operation name="getBookedFlightCount" qname="ns12:getBookedFlightCount" returnQName="ns12:getBookedFlightCountReturn" returnType="xsd:string" soapAction="" xmlns:ns12="http://Server.asg1.dist.concordia.com" xmlns:xsd="http://www.w3.org/2001/XMLSchema">
+   <ns1:parameter qname="ns12:recordType" type="xsd:string"/>
+  </ns1:operation>
+  <ns1:operation name="transferReservation" qname="ns13:transferReservation" returnQName="ns13:transferReservationReturn" returnType="xsd:string" soapAction="" xmlns:ns13="http://Server.asg1.dist.concordia.com" xmlns:xsd="http://www.w3.org/2001/XMLSchema">
+   <ns1:parameter qname="ns13:passengerID" type="xsd:string"/>
+   <ns1:parameter qname="ns13:currentCity" type="xsd:string"/>
+   <ns1:parameter qname="ns13:otherCity" type="xsd:string"/>
+  </ns1:operation>
+  <ns1:parameter name="allowedMethods" value="transferReservation mainFunc bookFlight getBookedFlightCount editFlightRecord"/>
+  <ns1:parameter name="wsdlPortType" value="FlightOperationsImplementation"/>
+  <ns1:parameter name="typeMappingVersion" value="1.2"/>
+  <ns1:parameter name="schemaQualified" value="http://Server.asg1.dist.concordia.com"/>
+  <ns1:parameter name="wsdlServicePort" value="FlightOperationsImplementation"/>
+  <ns1:parameter name="className" value="com.concordia.dist.asg1.Server.FlightOperationsImplementation"/>
+  <ns1:parameter name="wsdlTargetNamespace" value="http://Server.asg1.dist.concordia.com"/>
+  <ns1:parameter name="wsdlServiceElement" value="FlightOperationsImplementationService"/>
+ </ns1:service>
+ <ns1:service name="NewDelhiService" provider="java:RPC" style="wrapped" use="literal">
+  <ns1:operation name="bookFlight" qname="ns14:bookFlight" returnQName="ns14:bookFlightReturn" returnType="xsd:string" soapAction="" xmlns:ns14="http://Server.asg1.dist.concordia.com" xmlns:xsd="http://www.w3.org/2001/XMLSchema">
+   <ns1:parameter qname="ns14:firstName" type="xsd:string"/>
+   <ns1:parameter qname="ns14:lastName" type="xsd:string"/>
+   <ns1:parameter qname="ns14:address" type="xsd:string"/>
+   <ns1:parameter qname="ns14:phone" type="xsd:string"/>
+   <ns1:parameter qname="ns14:destination" type="xsd:string"/>
+   <ns1:parameter qname="ns14:date" type="xsd:string"/>
+   <ns1:parameter qname="ns14:flightClass" type="xsd:string"/>
+  </ns1:operation>
+  <ns1:operation name="editFlightRecord" qname="ns15:editFlightRecord" returnQName="ns15:editFlightRecordReturn" returnType="xsd:string" soapAction="" xmlns:ns15="http://Server.asg1.dist.concordia.com" xmlns:xsd="http://www.w3.org/2001/XMLSchema">
+   <ns1:parameter qname="ns15:recordID" type="xsd:string"/>
+   <ns1:parameter qname="ns15:fieldName" type="xsd:string"/>
+   <ns1:parameter qname="ns15:newValue" type="xsd:string"/>
+  </ns1:operation>
+  <ns1:operation name="getBookedFlightCount" qname="ns16:getBookedFlightCount" returnQName="ns16:getBookedFlightCountReturn" returnType="xsd:string" soapAction="" xmlns:ns16="http://Server.asg1.dist.concordia.com" xmlns:xsd="http://www.w3.org/2001/XMLSchema">
+   <ns1:parameter qname="ns16:recordType" type="xsd:string"/>
+  </ns1:operation>
+  <ns1:operation name="transferReservation" qname="ns17:transferReservation" returnQName="ns17:transferReservationReturn" returnType="xsd:string" soapAction="" xmlns:ns17="http://Server.asg1.dist.concordia.com" xmlns:xsd="http://www.w3.org/2001/XMLSchema">
+   <ns1:parameter qname="ns17:passengerID" type="xsd:string"/>
+   <ns1:parameter qname="ns17:currentCity" type="xsd:string"/>
+   <ns1:parameter qname="ns17:otherCity" type="xsd:string"/>
+  </ns1:operation>
+  <ns1:parameter name="allowedMethods" value="transferReservation bookFlight getBookedFlightCount editFlightRecord"/>
+  <ns1:parameter name="wsdlPortType" value="NewDelhiService"/>
+  <ns1:parameter name="typeMappingVersion" value="1.2"/>
+  <ns1:parameter name="schemaQualified" value="http://Server.asg1.dist.concordia.com"/>
+  <ns1:parameter name="wsdlServicePort" value="NewDelhiService"/>
+  <ns1:parameter name="className" value="com.concordia.dist.asg1.Server.NewDelhiService"/>
+  <ns1:parameter name="wsdlTargetNamespace" value="http://Server.asg1.dist.concordia.com"/>
+  <ns1:parameter name="wsdlServiceElement" value="NewDelhiServiceService"/>
+ </ns1:service>
+ <ns1:service name="WashingtonService" provider="java:RPC" style="wrapped" use="literal">
+  <ns1:operation name="bookFlight" qname="ns18:bookFlight" returnQName="ns18:bookFlightReturn" returnType="xsd:string" soapAction="" xmlns:ns18="http://Server.asg1.dist.concordia.com" xmlns:xsd="http://www.w3.org/2001/XMLSchema">
+   <ns1:parameter qname="ns18:firstName" type="xsd:string"/>
+   <ns1:parameter qname="ns18:lastName" type="xsd:string"/>
+   <ns1:parameter qname="ns18:address" type="xsd:string"/>
+   <ns1:parameter qname="ns18:phone" type="xsd:string"/>
+   <ns1:parameter qname="ns18:destination" type="xsd:string"/>
+   <ns1:parameter qname="ns18:date" type="xsd:string"/>
+   <ns1:parameter qname="ns18:flightClass" type="xsd:string"/>
+  </ns1:operation>
+  <ns1:operation name="editFlightRecord" qname="ns19:editFlightRecord" returnQName="ns19:editFlightRecordReturn" returnType="xsd:string" soapAction="" xmlns:ns19="http://Server.asg1.dist.concordia.com" xmlns:xsd="http://www.w3.org/2001/XMLSchema">
+   <ns1:parameter qname="ns19:recordID" type="xsd:string"/>
+   <ns1:parameter qname="ns19:fieldName" type="xsd:string"/>
+   <ns1:parameter qname="ns19:newValue" type="xsd:string"/>
+  </ns1:operation>
+  <ns1:operation name="getBookedFlightCount" qname="ns20:getBookedFlightCount" returnQName="ns20:getBookedFlightCountReturn" returnType="xsd:string" soapAction="" xmlns:ns20="http://Server.asg1.dist.concordia.com" xmlns:xsd="http://www.w3.org/2001/XMLSchema">
+   <ns1:parameter qname="ns20:recordType" type="xsd:string"/>
+  </ns1:operation>
+  <ns1:operation name="transferReservation" qname="ns21:transferReservation" returnQName="ns21:transferReservationReturn" returnType="xsd:string" soapAction="" xmlns:ns21="http://Server.asg1.dist.concordia.com" xmlns:xsd="http://www.w3.org/2001/XMLSchema">
+   <ns1:parameter qname="ns21:passengerID" type="xsd:string"/>
+   <ns1:parameter qname="ns21:currentCity" type="xsd:string"/>
+   <ns1:parameter qname="ns21:otherCity" type="xsd:string"/>
+  </ns1:operation>
+  <ns1:parameter name="allowedMethods" value="transferReservation bookFlight getBookedFlightCount editFlightRecord"/>
+  <ns1:parameter name="typeMappingVersion" value="1.2"/>
+  <ns1:parameter name="wsdlPortType" value="WashingtonService"/>
+  <ns1:parameter name="className" value="com.concordia.dist.asg1.Server.WashingtonService"/>
+  <ns1:parameter name="wsdlServicePort" value="WashingtonService"/>
+  <ns1:parameter name="schemaQualified" value="http://Server.asg1.dist.concordia.com"/>
+  <ns1:parameter name="wsdlTargetNamespace" value="http://Server.asg1.dist.concordia.com"/>
+  <ns1:parameter name="wsdlServiceElement" value="WashingtonServiceService"/>
+ </ns1:service>
+ <ns1:service name="Version" provider="java:RPC">
+  <ns1:parameter name="allowedMethods" value="getVersion"/>
+  <ns1:parameter name="className" value="org.apache.axis.Version"/>
+ </ns1:service>
+ <ns1:service name="Test" provider="java:RPC" style="wrapped" use="literal">
+  <ns1:operation name="printdata" qname="ns22:printdata" returnQName="ns22:printdataReturn" returnType="xsd:boolean" soapAction="" xmlns:ns22="http://Server.asg1.dist.concordia.com" xmlns:xsd="http://www.w3.org/2001/XMLSchema">
+   <ns1:parameter qname="ns22:data" type="xsd:string"/>
+  </ns1:operation>
+  <ns1:parameter name="allowedMethods" value="printdata"/>
+  <ns1:parameter name="wsdlPortType" value="Test"/>
+  <ns1:parameter name="typeMappingVersion" value="1.2"/>
+  <ns1:parameter name="schemaQualified" value="http://Server.asg1.dist.concordia.com"/>
+  <ns1:parameter name="wsdlServicePort" value="Test"/>
+  <ns1:parameter name="className" value="com.concordia.dist.asg1.Server.Test"/>
+  <ns1:parameter name="wsdlTargetNamespace" value="http://Server.asg1.dist.concordia.com"/>
+  <ns1:parameter name="wsdlServiceElement" value="TestService"/>
+ </ns1:service>
+ <ns1:service name="FlightImplementation" provider="java:RPC" style="wrapped" use="literal">
+  <ns1:operation name="bookFlight" qname="ns23:bookFlight" returnQName="ns23:bookFlightReturn" returnType="xsd:string" soapAction="" xmlns:ns23="http://Server.asg1.dist.concordia.com" xmlns:xsd="http://www.w3.org/2001/XMLSchema">
+   <ns1:parameter qname="ns23:firstName" type="xsd:string"/>
+   <ns1:parameter qname="ns23:lastName" type="xsd:string"/>
+   <ns1:parameter qname="ns23:address" type="xsd:string"/>
+   <ns1:parameter qname="ns23:phone" type="xsd:string"/>
+   <ns1:parameter qname="ns23:destination" type="xsd:string"/>
+   <ns1:parameter qname="ns23:date" type="xsd:string"/>
+   <ns1:parameter qname="ns23:flightClass" type="xsd:string"/>
+  </ns1:operation>
+  <ns1:operation name="editFlightRecord" qname="ns24:editFlightRecord" returnQName="ns24:editFlightRecordReturn" returnType="xsd:string" soapAction="" xmlns:ns24="http://Server.asg1.dist.concordia.com" xmlns:xsd="http://www.w3.org/2001/XMLSchema">
+   <ns1:parameter qname="ns24:recordID" type="xsd:string"/>
+   <ns1:parameter qname="ns24:fieldName" type="xsd:string"/>
+   <ns1:parameter qname="ns24:newValue" type="xsd:string"/>
+  </ns1:operation>
+  <ns1:operation name="getBookedFlightCount" qname="ns25:getBookedFlightCount" returnQName="ns25:getBookedFlightCountReturn" returnType="xsd:string" soapAction="" xmlns:ns25="http://Server.asg1.dist.concordia.com" xmlns:xsd="http://www.w3.org/2001/XMLSchema">
+   <ns1:parameter qname="ns25:recordType" type="xsd:string"/>
+  </ns1:operation>
+  <ns1:operation name="transferReservation" qname="ns26:transferReservation" returnQName="ns26:transferReservationReturn" returnType="xsd:string" soapAction="" xmlns:ns26="http://Server.asg1.dist.concordia.com" xmlns:xsd="http://www.w3.org/2001/XMLSchema">
+   <ns1:parameter qname="ns26:passengerID" type="xsd:string"/>
+   <ns1:parameter qname="ns26:currentCity" type="xsd:string"/>
+   <ns1:parameter qname="ns26:otherCity" type="xsd:string"/>
+  </ns1:operation>
+  <ns1:parameter name="allowedMethods" value="transferReservation bookFlight getBookedFlightCount editFlightRecord"/>
+  <ns1:parameter name="wsdlPortType" value="FlightImplementation"/>
+  <ns1:parameter name="typeMappingVersion" value="1.2"/>
+  <ns1:parameter name="schemaQualified" value="http://Server.asg1.dist.concordia.com"/>
+  <ns1:parameter name="wsdlServicePort" value="FlightImplementation"/>
+  <ns1:parameter name="className" value="com.concordia.dist.asg1.Server.FlightImplementation"/>
+  <ns1:parameter name="wsdlTargetNamespace" value="http://Server.asg1.dist.concordia.com"/>
+  <ns1:parameter name="wsdlServiceElement" value="FlightImplementationService"/>
+ </ns1:service>
+ <ns1:service name="WashingtonServer" provider="java:RPC" style="wrapped" use="literal">
+  <ns1:operation name="getBookedFlightCount" qname="ns27:getBookedFlightCount" returnQName="ns27:getBookedFlightCountReturn" returnType="xsd:string" soapAction="" xmlns:ns27="http://Server.asg1.dist.concordia.com" xmlns:xsd="http://www.w3.org/2001/XMLSchema">
+   <ns1:parameter qname="ns27:recordType" type="xsd:string"/>
+  </ns1:operation>
+  <ns1:operation name="transferReservation" qname="ns28:transferReservation" returnQName="ns28:transferReservationReturn" returnType="xsd:string" soapAction="" xmlns:ns28="http://Server.asg1.dist.concordia.com" xmlns:xsd="http://www.w3.org/2001/XMLSchema">
+   <ns1:parameter qname="ns28:passengerID" type="xsd:string"/>
+   <ns1:parameter qname="ns28:currentCity" type="xsd:string"/>
+   <ns1:parameter qname="ns28:otherCity" type="xsd:string"/>
+  </ns1:operation>
+  <ns1:operation name="bookFlight" qname="ns29:bookFlight" returnQName="ns29:bookFlightReturn" returnType="xsd:string" soapAction="" xmlns:ns29="http://Server.asg1.dist.concordia.com" xmlns:xsd="http://www.w3.org/2001/XMLSchema">
+   <ns1:parameter qname="ns29:firstName" type="xsd:string"/>
+   <ns1:parameter qname="ns29:lastName" type="xsd:string"/>
+   <ns1:parameter qname="ns29:address" type="xsd:string"/>
+   <ns1:parameter qname="ns29:phone" type="xsd:string"/>
+   <ns1:parameter qname="ns29:destination" type="xsd:string"/>
+   <ns1:parameter qname="ns29:date" type="xsd:string"/>
+   <ns1:parameter qname="ns29:flightClass" type="xsd:string"/>
+  </ns1:operation>
+  <ns1:operation name="editFlightRecord" qname="ns30:editFlightRecord" returnQName="ns30:editFlightRecordReturn" returnType="xsd:string" soapAction="" xmlns:ns30="http://Server.asg1.dist.concordia.com" xmlns:xsd="http://www.w3.org/2001/XMLSchema">
+   <ns1:parameter qname="ns30:recordID" type="xsd:string"/>
+   <ns1:parameter qname="ns30:fieldName" type="xsd:string"/>
+   <ns1:parameter qname="ns30:newValue" type="xsd:string"/>
+  </ns1:operation>
+  <ns1:parameter name="allowedMethods" value="transferReservation getBookedFlightCount bookFlight editFlightRecord"/>
+  <ns1:parameter name="typeMappingVersion" value="1.2"/>
+  <ns1:parameter name="wsdlPortType" value="WashingtonServer"/>
+  <ns1:parameter name="className" value="com.concordia.dist.asg1.Server.WashingtonServer"/>
+  <ns1:parameter name="wsdlServicePort" value="WashingtonServer"/>
+  <ns1:parameter name="schemaQualified" value="http://Server.asg1.dist.concordia.com"/>
+  <ns1:parameter name="wsdlTargetNamespace" value="http://Server.asg1.dist.concordia.com"/>
+  <ns1:parameter name="wsdlServiceElement" value="WashingtonServerService"/>
+ </ns1:service>
+ <ns1:service name="Montreal" provider="java:RPC" style="wrapped" use="literal">
+  <ns1:operation name="editFlightRecord" qname="ns31:editFlightRecord" returnQName="ns31:editFlightRecordReturn" returnType="xsd:string" soapAction="" xmlns:ns31="http://Server.asg1.dist.concordia.com" xmlns:xsd="http://www.w3.org/2001/XMLSchema">
+   <ns1:parameter qname="ns31:recordID" type="xsd:string"/>
+   <ns1:parameter qname="ns31:fieldName" type="xsd:string"/>
+   <ns1:parameter qname="ns31:newValue" type="xsd:string"/>
+  </ns1:operation>
+  <ns1:operation name="bookFlight" qname="ns32:bookFlight" returnQName="ns32:bookFlightReturn" returnType="xsd:string" soapAction="" xmlns:ns32="http://Server.asg1.dist.concordia.com" xmlns:xsd="http://www.w3.org/2001/XMLSchema">
+   <ns1:parameter qname="ns32:firstName" type="xsd:string"/>
+   <ns1:parameter qname="ns32:lastName" type="xsd:string"/>
+   <ns1:parameter qname="ns32:address" type="xsd:string"/>
+   <ns1:parameter qname="ns32:phone" type="xsd:string"/>
+   <ns1:parameter qname="ns32:destination" type="xsd:string"/>
+   <ns1:parameter qname="ns32:date" type="xsd:string"/>
+   <ns1:parameter qname="ns32:flightClass" type="xsd:string"/>
+  </ns1:operation>
+  <ns1:operation name="getBookedFlightCount" qname="ns33:getBookedFlightCount" returnQName="ns33:getBookedFlightCountReturn" returnType="xsd:string" soapAction="" xmlns:ns33="http://Server.asg1.dist.concordia.com" xmlns:xsd="http://www.w3.org/2001/XMLSchema">
+   <ns1:parameter qname="ns33:recordType" type="xsd:string"/>
+  </ns1:operation>
+  <ns1:operation name="transferReservation" qname="ns34:transferReservation" returnQName="ns34:transferReservationReturn" returnType="xsd:string" soapAction="" xmlns:ns34="http://Server.asg1.dist.concordia.com" xmlns:xsd="http://www.w3.org/2001/XMLSchema">
+   <ns1:parameter qname="ns34:passengerID" type="xsd:string"/>
+   <ns1:parameter qname="ns34:currentCity" type="xsd:string"/>
+   <ns1:parameter qname="ns34:otherCity" type="xsd:string"/>
+  </ns1:operation>
+  <ns1:parameter name="allowedMethods" value="transferReservation bookFlight getBookedFlightCount editFlightRecord"/>
+  <ns1:parameter name="wsdlPortType" value="Montreal"/>
+  <ns1:parameter name="typeMappingVersion" value="1.2"/>
+  <ns1:parameter name="schemaQualified" value="http://Server.asg1.dist.concordia.com"/>
+  <ns1:parameter name="wsdlServicePort" value="Montreal"/>
+  <ns1:parameter name="className" value="com.concordia.dist.asg1.Server.Montreal"/>
+  <ns1:parameter name="wsdlTargetNamespace" value="http://Server.asg1.dist.concordia.com"/>
+  <ns1:parameter name="wsdlServiceElement" value="MontrealService"/>
+ </ns1:service>
+ <ns1:service name="NewDelhiServer" provider="java:RPC" style="wrapped" use="literal">
+  <ns1:operation name="getBookedFlightCount" qname="ns35:getBookedFlightCount" returnQName="ns35:getBookedFlightCountReturn" returnType="xsd:string" soapAction="" xmlns:ns35="http://Server.asg1.dist.concordia.com" xmlns:xsd="http://www.w3.org/2001/XMLSchema">
+   <ns1:parameter qname="ns35:recordType" type="xsd:string"/>
+  </ns1:operation>
+  <ns1:operation name="transferReservation" qname="ns36:transferReservation" returnQName="ns36:transferReservationReturn" returnType="xsd:string" soapAction="" xmlns:ns36="http://Server.asg1.dist.concordia.com" xmlns:xsd="http://www.w3.org/2001/XMLSchema">
+   <ns1:parameter qname="ns36:passengerID" type="xsd:string"/>
+   <ns1:parameter qname="ns36:currentCity" type="xsd:string"/>
+   <ns1:parameter qname="ns36:otherCity" type="xsd:string"/>
+  </ns1:operation>
+  <ns1:operation name="bookFlight" qname="ns37:bookFlight" returnQName="ns37:bookFlightReturn" returnType="xsd:string" soapAction="" xmlns:ns37="http://Server.asg1.dist.concordia.com" xmlns:xsd="http://www.w3.org/2001/XMLSchema">
+   <ns1:parameter qname="ns37:firstName" type="xsd:string"/>
+   <ns1:parameter qname="ns37:lastName" type="xsd:string"/>
+   <ns1:parameter qname="ns37:address" type="xsd:string"/>
+   <ns1:parameter qname="ns37:phone" type="xsd:string"/>
+   <ns1:parameter qname="ns37:destination" type="xsd:string"/>
+   <ns1:parameter qname="ns37:date" type="xsd:string"/>
+   <ns1:parameter qname="ns37:flightClass" type="xsd:string"/>
+  </ns1:operation>
+  <ns1:operation name="editFlightRecord" qname="ns38:editFlightRecord" returnQName="ns38:editFlightRecordReturn" returnType="xsd:string" soapAction="" xmlns:ns38="http://Server.asg1.dist.concordia.com" xmlns:xsd="http://www.w3.org/2001/XMLSchema">
+   <ns1:parameter qname="ns38:recordID" type="xsd:string"/>
+   <ns1:parameter qname="ns38:fieldName" type="xsd:string"/>
+   <ns1:parameter qname="ns38:newValue" type="xsd:string"/>
+  </ns1:operation>
+  <ns1:parameter name="allowedMethods" value="transferReservation getBookedFlightCount bookFlight editFlightRecord"/>
+  <ns1:parameter name="wsdlPortType" value="NewDelhiServer"/>
+  <ns1:parameter name="typeMappingVersion" value="1.2"/>
+  <ns1:parameter name="schemaQualified" value="http://Server.asg1.dist.concordia.com"/>
+  <ns1:parameter name="wsdlServicePort" value="NewDelhiServer"/>
+  <ns1:parameter name="className" value="com.concordia.dist.asg1.Server.NewDelhiServer"/>
+  <ns1:parameter name="wsdlTargetNamespace" value="http://Server.asg1.dist.concordia.com"/>
+  <ns1:parameter name="wsdlServiceElement" value="NewDelhiServerService"/>
+ </ns1:service>
+ <ns1:transport name="http">
+  <ns1:requestFlow>
+   <ns1:handler type="URLMapper"/>
+   <ns1:handler type="java:org.apache.axis.handlers.http.HTTPAuthHandler"/>
+  </ns1:requestFlow>
+  <ns1:parameter name="qs:list" value="org.apache.axis.transport.http.QSListHandler"/>
+  <ns1:parameter name="qs:wsdl" value="org.apache.axis.transport.http.QSWSDLHandler"/>
+  <ns1:parameter name="qs.list" value="org.apache.axis.transport.http.QSListHandler"/>
+  <ns1:parameter name="qs.method" value="org.apache.axis.transport.http.QSMethodHandler"/>
+  <ns1:parameter name="qs:method" value="org.apache.axis.transport.http.QSMethodHandler"/>
+  <ns1:parameter name="qs.wsdl" value="org.apache.axis.transport.http.QSWSDLHandler"/>
+ </ns1:transport>
+ <ns1:transport name="local">
+  <ns1:responseFlow>
+   <ns1:handler type="LocalResponder"/>
+  </ns1:responseFlow>
+ </ns1:transport>
+</ns1:deployment>
